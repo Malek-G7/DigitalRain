@@ -1,6 +1,6 @@
 #include "digit.h"
 #include<ostream>
-
+#include <iostream>
 digit::digit() {
 	this->x = 0;
 	this->y = 0;
@@ -12,6 +12,9 @@ digit::digit(int x, int y , int number, WORD color) {
 	this->y = y;
 	this->number = number;
 	this->color = color;
+}
+digit::~digit() {
+
 }
 void digit::setColor(WORD color) {
 	this->color = color;
