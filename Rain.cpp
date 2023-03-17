@@ -10,7 +10,7 @@ Rain::Rain() {
     this->coord.Y = 0;
     this->hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     this->info = {};
-    this->runtime = 10000;
+    this->runtime = 1000;
     this->colors =
     {
         FOREGROUND_INTENSITY | FOREGROUND_GREEN
@@ -39,6 +39,9 @@ Rain::Rain(std::vector<digit> digits,std::vector<WORD> colors,std::vector<char> 
     this->NoOfDigits = NoOfDigits;
     this->runtime = runtime;
 }
+Rain::~Rain() {
+    std::cout << std::endl << "Rain destructor called" << std::endl;
+}
 
 void Rain::setDigits(std::vector<digit> digits) {
 	this->digits = digits;
@@ -48,15 +51,15 @@ void Rain::digitalRain() {
     while (this->coord.Y<this->runtime) {
         GetConsoleScreenBufferInfo(this->hConsole, &info);
         COORD* p = &info.dwMaximumWindowSize;
-        int randomColNo = randomize(1, digits.size() - 1, 0);
-        for (int i = 0; i < randomColNo; i++) {
+        auto randomColNo = randomize(1, digits.size() - 1, 0);
+        for (auto i = 0; i < randomColNo; i++) {
             try {
                 this->digits.at(i).setX(randomize(0, p->X, i));
                 this->digits.at(i).setColor(this->colors.at(randomize(0, this->colors.size() - 1, i)));
                 this->digits.at(i).setCh(this->characters.at(randomize(0, this->characters.size() - 1, i)));
                 coord.X = this->digits.at(i).getX();
             }
-            catch (std::out_of_range & e) {
+            catch (std::out_of_range const&e) {
                 std::cout << " Exception: " << e.what() << std::endl;
             }
             SetConsoleCursorPosition(hConsole, coord);

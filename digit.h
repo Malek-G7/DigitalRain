@@ -6,6 +6,7 @@ class digit
 public:
 	digit();
 	digit(int, int,int, WORD);
+	~digit();
 	WORD getColor() const { return color; };
 	int getX() const { return x; };
 	int getY() const { return y; };
