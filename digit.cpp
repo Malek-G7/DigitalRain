@@ -1,16 +1,17 @@
 #include "digit.h"
 #include<ostream>
+#include <random>
+
 #include <iostream>
 digit::digit() {
 	this->x = 0;
 	this->y = 0;
-	this->number = 0;
-	this->color = FOREGROUND_INTENSITY;
+	this->color = FOREGROUND_INTENSITY ;
+	this->ch = '1' ;
 }
-digit::digit(int x, int y , int number, WORD color) {
+digit::digit(int x, int y ,  WORD color) {
 	this->x = x;
 	this->y = y;
-	this->number = number;
 	this->color = color;
 }
 digit::~digit() {
@@ -25,9 +26,7 @@ void digit::setX(int x ) {
 void digit::setY(int y) {
 	this->y = y;
 }
-void digit::setNumber(int number) {
-	this->number = number;
-}
+
 void digit::setCh(char ch) {
 	this->ch = ch;
 }
@@ -35,4 +34,10 @@ std::ostream& operator<<(std::ostream& output, const digit& d) {
 	output << d.getCh();
 	
 	return output;
+}
+int digit::randomize(int start, int end, int i) {
+	std::default_random_engine e;
+	std::uniform_int_distribution<int> u(start, end);
+	e.seed((unsigned int)time(0) + i);
+	return u(e);
 }

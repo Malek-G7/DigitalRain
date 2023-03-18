@@ -127,13 +127,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="character.cpp" />
     <ClCompile Include="digit.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="number.cpp" />
     <ClCompile Include="Rain.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="character.h" />
     <ClInclude Include="digit.h" />
     <ClInclude Include="DigitalRain.h" />
+    <ClInclude Include="number.h" />
     <ClInclude Include="Rain.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
