@@ -16,12 +16,7 @@ Rain::Rain() {
     {
         FOREGROUND_INTENSITY | FOREGROUND_GREEN
     };
-    this->NoOfDigits=5;
-    for (int i = 0; i < NoOfDigits ; i++) {
-         character ch;
-         number n;
-         this->digits.insert(digits.end(), {n, ch});
-    }
+    this->NoOfDigits=10;
 }
 
 Rain::Rain(std::vector<digit> digits,std::vector<WORD> colors, COORD coord, HANDLE hConsole, CONSOLE_SCREEN_BUFFER_INFO info, int NoOfDigits,int runtime) {
@@ -41,28 +36,60 @@ void Rain::setDigits(std::vector<digit> digits) {
 	this->digits = digits;
 }
 
-void Rain::digitalRain() {
+void Rain::digitalRain_char() {
+    for (auto i = 0; i < NoOfDigits; i++) {
+        character ch;
+        this->characters.push_back(ch);
+    }
     while (this->coord.Y<this->runtime) {
         GetConsoleScreenBufferInfo(this->hConsole, &info);
         COORD* p = &info.dwMaximumWindowSize;
-        auto randomColNo = randomize(1, digits.size() - 1, 0);
+        auto randomColNo = randomize(1, characters.size() - 1, 0);
         for (auto i = 0; i < randomColNo; i++) {
             try {
-                this->digits.at(i).setX(randomize(0, p->X, i));
-                this->digits.at(i).setColor(this->colors.at(randomize(0, this->colors.size() - 1, i)));
-                coord.X = this->digits.at(i).getX();
+                this->characters.at(i).setX(randomize(0, p->X, i));
+                this->characters.at(i).setColor(this->colors.at(randomize(0, this->colors.size() - 1, i)));
+                this->characters.at(i).randomizeDigit();
+                coord.X = this->characters.at(i).getX();
             }
             catch (std::out_of_range const&e) {
                 std::cout << " Exception: " << e.what() << std::endl;
             }
             SetConsoleCursorPosition(hConsole, coord);
-            SetConsoleTextAttribute(hConsole, this->digits.at(i).getColor());
-            std::cout << this->digits.at(i);
+            SetConsoleTextAttribute(hConsole, this->characters.at(i).getColor());
+            std::cout << this->characters.at(i);
         }
         coord.Y++;
         Sleep(25);
     }
  }
+void Rain::digitalRain_num() {
+    for (auto i = 0; i < NoOfDigits; i++) {
+        number num;
+        this->numbers.push_back(num);
+    }
+    while (this->coord.Y < this->runtime) {
+        GetConsoleScreenBufferInfo(this->hConsole, &info);
+        COORD* p = &info.dwMaximumWindowSize;
+        auto randomColNo = randomize(1, numbers.size() - 1, 0);
+        for (auto i = 0; i < randomColNo; i++) {
+            try {
+                this->numbers.at(i).setX(randomize(0, p->X, i));
+                this->numbers.at(i).setColor(this->colors.at(randomize(0, this->colors.size() - 1, i)));
+                this->numbers.at(i).randomizeDigit();
+                coord.X = this->numbers.at(i).getX();
+            }
+            catch (std::out_of_range const& e) {
+                std::cout << " Exception: " << e.what() << std::endl;
+            }
+            SetConsoleCursorPosition(hConsole, coord);
+            SetConsoleTextAttribute(hConsole, this->numbers.at(i).getColor());
+            std::cout << this->numbers.at(i);
+        }
+        coord.Y++;
+        Sleep(25);
+    }
+}
 
 int Rain::randomize(int start, int end,int i) {
     std::default_random_engine e;

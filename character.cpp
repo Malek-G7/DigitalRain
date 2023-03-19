@@ -5,8 +5,14 @@ int character::noOfChars = 0;
 
 character::character() {
 	this->characters = {
-		'h','m','j','q','r','t','u','l'
+		'a' , 'b','c','d','e','f','g','h','i','j','k','l','m','n','o','p'
+		,'q','r','s','t','u','v','w','x','y','z'
 	};
+}
+character::~character() {
+
+}
+void character::randomizeDigit() {
 	try {
 		this->setCh(this->characters.at(randomize(0, this->characters.size() - 1, noOfChars)));
 	}
@@ -16,15 +22,8 @@ character::character() {
 	noOfChars++;
 }
 
-void character::setChar(char ch) {
-	this->ch = ch;
-}
-
-char character::getChar() const {
-	return this->ch;
-}
 std::ostream& operator<<(std::ostream& output, const character& d) {
-	output << d.getChar();
+	output << d.getCh();
 
 	return output;
 }
