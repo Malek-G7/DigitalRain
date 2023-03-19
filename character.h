@@ -4,10 +4,9 @@
 class character : public digit {
 public:
 	character();
-	char getChar() const;
-	void setChar(char);
+	~character();
+	void randomizeDigit();
 private:
 	static int noOfChars ;
-	char ch;
 	std::vector<char> characters;
 };

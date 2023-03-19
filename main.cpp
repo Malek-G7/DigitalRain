@@ -8,7 +8,7 @@
 int main(int argc, wchar_t* argv[])
 {
     Rain rain;
-    rain.digitalRain();
-
+    //rain.digitalRain_char();
+    rain.digitalRain_num();
     return 0;
 }

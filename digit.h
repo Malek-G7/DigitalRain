@@ -16,6 +16,7 @@ public:
 	void setX(int);
 	void setY(int);
 	int randomize(int start, int end, int i);
+	void randomizeDigit();
 private:
 	char ch;
 	int x;

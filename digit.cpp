@@ -17,6 +17,7 @@ digit::digit(int x, int y ,  WORD color) {
 digit::~digit() {
 
 }
+
 void digit::setColor(WORD color) {
 	this->color = color;
 }
@@ -26,10 +27,13 @@ void digit::setX(int x ) {
 void digit::setY(int y) {
 	this->y = y;
 }
+void digit::randomizeDigit() {
 
+}
 void digit::setCh(char ch) {
 	this->ch = ch;
 }
+
 std::ostream& operator<<(std::ostream& output, const digit& d) {
 	output << d.getCh();
 	
