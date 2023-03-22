@@ -1,8 +1,17 @@
-#pragma once
+/*
+Malek Geshash
+Final year software and Electronics Engineering - ATU
+C++ Programming
+Digital Rain Project
+*/
+
+#ifndef DIGIT_H
+#define DIGIT_H
+
 #include<string>
 #include<Windows.h>
-class digit
-{
+
+class digit {
 public:
 	digit();
 	digit(int, int, WORD);
@@ -25,4 +34,6 @@ private:
 };
 
 std::ostream& operator<<(std::ostream& output, const digit&);
+
+#endif
 

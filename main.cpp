@@ -1,5 +1,12 @@
 ﻿#include <random>
 #include <iostream>     
+/*
+Malek Geshash
+Final year software and Electronics Engineering - ATU
+C++ Programming
+Digital Rain Project
+*/
+
 #include <windows.h>
 #include"digit.h"
 #include<vector>
