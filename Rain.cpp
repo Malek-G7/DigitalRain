@@ -1,3 +1,7 @@
+/*
+
+*/
+
 #include "digit.h"
 #include "Rain.h"
 #include <vector>
@@ -7,6 +11,7 @@
 #include <chrono>
 #include "number.h"
 #include "character.h"
+
 Rain::Rain() {
     this->coord.Y = 0;
     this->hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -28,6 +33,7 @@ Rain::Rain(std::vector<digit> digits,std::vector<WORD> colors, COORD coord, HAND
     this->NoOfDigits = NoOfDigits;
     this->runtime = runtime;
 }
+
 Rain::~Rain() {
     std::cout << std::endl << "Rain destructor called" << std::endl;
 }
@@ -62,7 +68,8 @@ void Rain::digitalRain_char() {
         coord.Y++;
         Sleep(25);
     }
- }
+}
+
 void Rain::digitalRain_num() {
     for (auto i = 0; i < NoOfDigits; i++) {
         number num;

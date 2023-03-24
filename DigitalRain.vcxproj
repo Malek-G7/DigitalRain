@@ -136,7 +136,6 @@
   <ItemGroup>
     <ClInclude Include="character.h" />
     <ClInclude Include="digit.h" />
-    <ClInclude Include="DigitalRain.h" />
     <ClInclude Include="number.h" />
     <ClInclude Include="Rain.h" />
   </ItemGroup>
