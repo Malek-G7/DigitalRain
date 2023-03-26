@@ -1,5 +1,8 @@
 /*
-
+Malek Geshash
+Final year software and Electronics Engineering - ATU
+C++ Programming
+Digital Rain Project
 */
 
 #include "digit.h"
